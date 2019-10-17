@@ -3,7 +3,10 @@ var app = express();
 var PORT = 3000;
 const path = require('path');
 
-app.get('../', function(req, res){
+// serve static files
+app.use(express.static("public"));
+
+app.get('./', function(req, res){
   res.send('Hello world');
 });
 
@@ -72,6 +75,9 @@ app.get("/contact", (req, res, next) => {
   res.render("contact", {url:url});
   });
   
-  
+  app.get("/mars", (req, res, next) => {
+    let url = "localhost:3000"
+    res.render("mars", {url:url});
+  })
   
 

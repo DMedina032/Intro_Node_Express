@@ -1,5 +1,23 @@
+var mars = "mars";
+var condition = "weather"
+
+
 // "get" request
 const fetch = require('node-fetch');
+
+fetch('https: //api.nasa.gov/insight_weather/?api_key=DEMO_KEY&feedtype=json&ver=1.0')
+.then(res => res.json())
+.then(data => {
+    const{...img} = mars.rover;
+    marsIMG =`<img src="https://images.app.goo.gl/Y8vzqpiqZoZ1WyqC7"`
+});
+
+
+
+
+
+
+
 fetch('https: //api.nasa.gov/insight_weather/?api_key=DEMO_KEY&feedtype=json&ver=1.0')
 . then(response => package.json())
 .then(data => {
@@ -57,7 +75,7 @@ function checkStatus (res){
 }
 
 // Asynchronous request 
-const url = "https: //api.nasa.gov/insight_weather/?api_key=DEMO_KEY&feedtype=json&ver=1.0";
+// const url = "https: //api.nasa.gov/insight_weather/?api_key=DEMO_KEY&feedtype=json&ver=1.0";
 
 const get_data = async url => {
     try {
