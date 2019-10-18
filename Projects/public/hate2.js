@@ -1,9 +1,14 @@
-var mars = "mars";
-var condition = "weather"
+const express = require('express');
+const fetch = require('node-fetch');
 
+
+
+var mars = "mars";
+var condition = "weather";
+var require = "stars";
 
 // "get" request
-const fetch = require('node-fetch');
+
 
 fetch('https: //api.nasa.gov/insight_weather/?api_key=DEMO_KEY&feedtype=json&ver=1.0')
 .then(res => res.json())
@@ -88,3 +93,48 @@ const get_data = async url => {
 };
 
 getData(url);
+
+
+
+
+
+
+// ..............................
+// var express = require('express');
+// var app = express();
+// var PORT = 3000;
+// const path = require('path');
+
+// serve static files
+app.use(express.static("public"));
+
+app.get('./', function(req, res){
+  res.send('Hello world');
+});
+
+app.set("view engine", "pug")
+app.set("views" , 'views');
+
+var server = app.listen(3000, function(){
+    var host = server.address().address;
+    var port = server.address().port;
+    console.log('app listening at http://localhost:3000', host, port);
+});
+
+
+app.get("/", (req, res, next) => {
+    let url = "localhost:3000"
+    res.render("index", {url:url});
+    });
+    
+  
+  app.get("/contact", (req, res, next) => {
+    let url = "localhost:3000"
+    res.render("contact", {url:url});
+    });
+    
+    app.get("/mars", (req, res, next) => {
+      let url = "localhost:3000"
+      res.render("mars", {url:url});
+    })
+    
