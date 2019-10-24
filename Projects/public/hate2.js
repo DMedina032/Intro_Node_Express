@@ -1,5 +1,5 @@
-const express = require('express');
-const fetch = require('node-fetch');
+// const express = require('express');
+// const fetch = require('node-fetch');
 
 
 
@@ -10,11 +10,13 @@ var require = "stars";
 // "get" request
 
 
-fetch('https: //api.nasa.gov/insight_weather/?api_key=DEMO_KEY&feedtype=json&ver=1.0')
+fetch('https://api.nasa.gov/insight_weather/?api_key=DEMO_KEY&feedtype=json&ver=1.0')
 .then(res => res.json())
 .then(data => {
-    const{...img} = mars.rover;
-    marsIMG =`<img src="https://images.app.goo.gl/Y8vzqpiqZoZ1WyqC7"`
+    console.log("DATA:",data);
+    const{} = mars.rover;
+    marsIMG =`<img src="https://images.app.goo.gl/Y8vzqpiqZoZ1WyqC7"`.headers
+    /// innerHTML ?
 });
 
 
@@ -28,7 +30,7 @@ fetch('https: //api.nasa.gov/insight_weather/?api_key=DEMO_KEY&feedtype=json&ver
 .then(data => {
     console.log(data)
 })
-.catch(err => jbj)
+.catch(err => '' )
 
 // POST call
 var url = 'https: //api.nasa.gov/insight_weather/?api_key=DEMO_KEY&feedtype=json&ver=1.0';
@@ -91,7 +93,7 @@ const get_data = async url => {
         console.log(error);
     }
 };
-
+var reportStatus;
 getData(url);
 
 
@@ -137,4 +139,50 @@ app.get("/", (req, res, next) => {
       let url = "localhost:3000"
       res.render("mars", {url:url});
     })
+
+
+
+    // ..........
+    const personTemplate = document.querySelector("#person");
+const peopleContainer = document.querySelector("#people");
+
+async function getApi() {
+  const req = await fetch("https://reqres.in/api/users?page=2");
+  const resp = await req.json();
+
+  for (const person of resp.data) {
+    let clone = document.importNode(personTemplate.content, true);
+    clone.querySelector(".name").textContent = person.first_name;
+    clone.querySelector(".surname").textContent = person.last_name;
+    clone.querySelector(".image").src = person.avatar;
+    peopleContainer.appendChild(clone);
+  }
+}
+
+getApi();
+
+
+// const peopleContainer = document.querySelector("#people");
+const person = (name, surname, image) => `
+<div>
+  <p class="name">${name}</p>
+  <p class="surname">${surname}</p>
+  <img src="${image}" alt="" class="image">
+</div>
+`;
+
+async function getApi() {
+  const req = await fetch("https://reqres.in/api/users?page=2");
+  const resp = await req.json();
+
+  let htmlString = "";
+
+  for (const {first_name, last_name, avatar} of resp.data) {
+    htmlString += person(first_name, last_name, avatar);
+  }
+  // This should probably be an html element that gets appended
+  // instead of just shoving strings in willy-nilly, but anyway:
+  peopleContainer.innerHTML = htmlString;
+}
+
     
